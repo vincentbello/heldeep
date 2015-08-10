@@ -1,0 +1,96 @@
+body {
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+	font-weight: 300;
+	background-color: #eee;
+	margin: 0 !important;
+}
+
+#container {
+	width: 960px;
+	padding: 0 15px;
+	background-color: #fff;
+	line-height: 1.5em;
+	margin: 0 auto;
+}
+
+*:focus {
+	outline: 0 !important;
+}
+
+input {
+	border: 1px solid #ddd;
+	transition: border-color 0.3s linear;
+}
+
+input:focus {
+	border-color: #aaa;
+}
+
+#top {
+	margin-top: 0;
+	padding-top: 20px;
+}
+
+#return-to-top {
+	position: fixed;
+	bottom: 10px;
+	margin-left: 920px;
+	display: none;
+}
+
+#track-search {
+	width: 500px;
+	height: 30px;
+	font-size: 17px;
+	padding: 3px 10px 2px;
+	border-radius: 3px;
+}
+
+h2.heldeep-header {
+	color: #00E;
+	cursor: pointer;
+}
+
+h2.heldeep-header i {
+	margin-left: 4px;
+	opacity: 0;
+	transition: opacity 0.1s linear;
+}
+
+h2.heldeep-header:hover i {
+	opacity: 1;
+}
+
+#results-container {
+	display: none;
+}
+
+.highlighted {
+	font-weight: bold;
+	background-color: yellow;
+}
+
+.more-info {
+	margin-left: 5px;
+	color: #888;
+	font-size: 85%;
+	text-decoration: none;
+}
+
+.more-info i {
+	opacity:0;
+	transition: opacity 0.1s linear;
+}
+
+.more-info:hover {
+	text-decoration: underline;
+}
+
+.more-info:hover i {
+	opacity: 1;
+}
+
+ol:last-of-type {
+	margin-bottom: 0;
+	padding-bottom: 20px;
+}
