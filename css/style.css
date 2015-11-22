@@ -77,7 +77,8 @@ h2.heldeep-header:hover i {
 	text-decoration: none;
 }
 
-.more-info i {
+.more-info i,
+li i.fa-search {
 	opacity:0;
 	transition: opacity 0.1s linear;
 }
@@ -93,4 +94,31 @@ h2.heldeep-header:hover i {
 ol:last-of-type {
 	margin-bottom: 0;
 	padding-bottom: 20px;
+}
+
+h4 {
+	margin: 15px 0 0;
+}
+
+li {
+	padding: 2px 0;
+}
+
+li.special {
+	margin-bottom: 15px;
+}
+
+li i.fa-search {
+	color: #00E;
+	margin-left: 5px;
+  font-weight: bold;
+  font-size: 17px;
+}
+
+li i.fa-search:hover {
+	color: #0000BD;
+}
+
+li:hover i.fa-search {
+	opacity: 1;
 }
