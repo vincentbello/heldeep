@@ -1,18 +1,14 @@
 <?php
 
-require 'vendor/autoload.php';
+	require 'init.php';
+	use Parse\ParseQuery;
 
-use Parse\ParseClient;
+	$query = new ParseQuery("Episode");
+	$query->descending("epId");
 
-ParseClient::initialize('IAwGLdS47JrPuxII2gR9BEpJDXF25FEY6jiVCN0s', 'OYZfczcSd402kcsRl3fT0YZHcS4tKv9j8NvFFHlC', 'kGV5HvrdMXpP3fI6t2fMnrrHAX2Jf8GgnNsZNxwa');
+	$heldeeps = $query->find();
 
-use Parse\ParseQuery;
-
-$query = new ParseQuery("Episode");
-$query->descending("epId");
-$heldeeps = $query->find();
-
-$count = count($heldeeps);
+	$count = count($heldeeps);
 ?>
 
 
@@ -92,20 +88,24 @@ $count = count($heldeeps);
 		<ol id="tracklist-<?php echo sprintf('%03d', $heldeep->get("epId")); ?>">
 			<?php
 
-			$query = new ParseQuery("Track");
-			$query->equalTo("episode", $heldeep);
-			$tracks = $query->find();
+			if ($i < FIRST_SHOWN_LIMIT) {
 
-			for ($j = 0; $j < count($tracks); $j++) {
+				$query = new ParseQuery("Track");
+				$query->equalTo("episode", $heldeep);
+				$tracks = $query->find();
 
-				$track = $tracks[$j];
-				if ($special = $track->get("type")) {
-					echo "<h4>{$special}</h4>";
+				for ($j = 0; $j < count($tracks); $j++) {
+					$track = $tracks[$j];
+					if ($special = $track->get("type")) {
+						echo "<h4>{$special}</h4>";
+					}
+					echo "<li" . (($special) ? " class='special'" : "") . ">" . $track->get("title");
+						echo "<a target='_blank' href='https://soundcloud.com/search?q=" . urlencode($track->get("title")) . "'><i class='fa fa-search'></i></a>";
+					echo "</li>";
 				}
-				echo "<li" . (($special) ? " class='special'" : "") . ">" . $track->get("title");
-					echo "<a target='_blank' href='https://soundcloud.com/search?q=" . urlencode($track->get("title")) . "'><i class='fa fa-search'></i></a>";
-				echo "</li>";
 
+			} else {
+				echo "<i class='fa fa-spinner fa-pulse'></i>";
 			}
 
 			?>
